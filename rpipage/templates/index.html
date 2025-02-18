@@ -1,0 +1,52 @@
+<!--
+ Portions of this file are based on the the Adafruit 3D Model Viewer demo at
+ https://github.com/adafruit/Adafruit_WebSerial_3DModelViewer
+ At time of writing, there is no specific license associated with that code.
+ 
+ Specific sections based on the demo are noted with comments in-line.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Data From RPi on Drone</title>
+    <meta charset="utf-8">
+    <!-- Based on Adafruit Demo -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "{{ url_for('static', filename='js/three.module.min.js') }}",
+                "objloader": "{{ url_for('static', filename='js/OBJLoader.js') }}"
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="module" src="{{ url_for('script_js') }}" defer></script>
+    <!-- End portion based on Adafruit Demo -->
+  </head>
+  <body>
+    <header class="header">
+      <h1>Data From RPi on Drone</h1>
+    </header>
+    <main class="main">
+      <div class="animation-container">
+        <canvas id="canvas"></canvas>
+      </div>
+      <img style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 25%);" src="http://rpi4bdplc.local:8081/">
+      <div id="data-container" class="row">
+        <div>Roll: <span id="roll"></span></div>
+        <div>Lattitude: <span id="lat"></span></div>
+        <div>Speed: <span id="speed"></span></div>
+        <div>Pitch: <span id="pitch"></span></div>
+        <div>Longitude: <span id="lon"></span></div>
+        <div>Climb: <span id="climb"></span></div>
+        <div>Yaw: <span id="yaw"></span></div>
+        <div>Altitude: <span id="alt"></span></div>
+        <div>GPS Status: <span id="status"></span></div>
+        <div id="log" class="log"></div>
+      </div>
+    </main>
+  </body>
+</html>
